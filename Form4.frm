@@ -1,5 +1,6 @@
 VERSION 5.00
 Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
+Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
 Begin VB.Form Form4 
    Caption         =   "Form4"
    ClientHeight    =   6525
@@ -10,6 +11,13 @@ Begin VB.Form Form4
    ScaleHeight     =   6525
    ScaleWidth      =   9885
    StartUpPosition =   3  'Windows Default
+   Begin MSComDlg.CommonDialog CommonDialog1 
+      Left            =   3480
+      Top             =   5520
+      _ExtentX        =   847
+      _ExtentY        =   847
+      _Version        =   393216
+   End
    Begin MSAdodcLib.Adodc Adodc1 
       Height          =   330
       Left            =   960
@@ -349,23 +357,23 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Private Sub Command1_Click()
     Adodc1.Recordset.MoveLast
-    x = App.Path
-    Image2.Picture = LoadPicture(x & "\" & Label8.Caption)
-    
+   
     If Adodc1.Recordset.BOF Then
         adocd1.Recordset.MoveLast
     End If
+    x = App.Path
+    Image2.Picture = LoadPicture(x & "\" & Label8.Caption)
     
 End Sub
 
 Private Sub Command2_Click()
     Adodc1.Recordset.MoveNext
-    x = App.Path
-    Image2.Picture = LoadPicture(x & "\" & Label8.Caption)
-    
+  
     If Adodc1.Recordset.EOF Then
         Adodc1.Recordset.MoveFirst
     End If
+     x = App.Path
+    Image2.Picture = LoadPicture(x & "\" & Label8.Caption)
     
 End Sub
 Private Sub Command3_Click()
@@ -465,8 +473,8 @@ Private Sub Form_Load()
     Command3.Enabled = True
     Command4.Enabled = True
     Command5.Enabled = True
-    Command6.Enabled = False
-    
+    Command6.Enabled = True
+    Command7.Enabled = False
     
 
 End Sub

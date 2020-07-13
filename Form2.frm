@@ -350,23 +350,22 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Private Sub Command1_Click()
     Adodc1.Recordset.MoveLast
-    x = App.Path
-    Image2.Picture = LoadPicture(x & "\" & Label8.Caption)
     
     If Adodc1.Recordset.BOF Then
         adocd1.Recordset.MoveLast
     End If
-    
+     x = App.Path
+    image2.Picture = LoadPicture(x & "\" & Label8.Caption)
 End Sub
 
 Private Sub Command2_Click()
     Adodc1.Recordset.MoveNext
-    x = App.Path
-    Image2.Picture = LoadPicture(x & "\" & Label8.Caption)
-    
+   
     If Adodc1.Recordset.EOF Then
         Adodc1.Recordset.MoveFirst
     End If
+      x = App.Path
+    image2.Picture = LoadPicture(x & "\" & Label8.Caption)
     
 End Sub
 Private Sub Command3_Click()
@@ -374,7 +373,7 @@ Private Sub Command3_Click()
      Adodc1.Recordset.Update
     Adodc1.Recordset.MoveFirst
     x = App.Path
-    Image2.Picture = LoadPicture(x & "\" & Label8.Caption)
+    image2.Picture = LoadPicture(x & "\" & Label8.Caption)
 
     
     Text1.Enabled = False
@@ -389,7 +388,7 @@ Private Sub Command3_Click()
     Command4.Enabled = True
     Command5.Enabled = True
     Command6.Enabled = True
-   
+    Command7.Enabled = False
     
 End Sub
 
@@ -408,11 +407,11 @@ Private Sub Command4_Click()
     Command4.Enabled = False
     Command5.Enabled = False
     Command6.Enabled = False
-    
+    Command7.Enabled = True
     Text1.SetFocus
     
     Label11.Caption = ""
-    Image2.Picture = LoadPicture(Label8.Caption)
+    image2.Picture = LoadPicture(Label8.Caption)
     
 End Sub
 
@@ -420,7 +419,7 @@ Private Sub Command5_Click()
     Adodc1.Recordset.Delete
     Adodc1.Recordset.MoveFirst
     x = App.Path
-    Image2.Picture = LoadPicture(x & "\" & Label8.Caption)
+    image2.Picture = LoadPicture(x & "\" & Label8.Caption)
 End Sub
 
 Private Sub Command6_Click()
@@ -436,12 +435,12 @@ Private Sub Command6_Click()
     Command4.Enabled = False
     Command5.Enabled = False
     Command6.Enabled = False
-    
+    Command7.Enabled = False
 End Sub
 
 Private Sub Command7_Click()
     CommonDialog1.ShowOpen
-    Image2.Picture = LoadPicture(CommonDialog1.FileName)
+    image2.Picture = LoadPicture(CommonDialog1.FileName)
     Label8.Caption = CommonDialog1.FileTitle
     
     If Label8.Caption = "" Then
@@ -453,7 +452,7 @@ End Sub
 
 Private Sub Form_Load()
      x = App.Path
-    Image2.Picture = LoadPicture(x & "\" & Label8.Caption)
+    image2.Picture = LoadPicture(x & "\" & Label8.Caption)
     
     Text1.Enabled = False
     Text2.Enabled = False
@@ -467,7 +466,7 @@ Private Sub Form_Load()
     Command4.Enabled = True
     Command5.Enabled = True
     Command6.Enabled = False
-    
+    Command7.Enabled = False
     
 
 End Sub

@@ -1,5 +1,6 @@
 VERSION 5.00
 Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
+Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
 Begin VB.Form Form3 
    Caption         =   "            "
    ClientHeight    =   6360
@@ -10,6 +11,13 @@ Begin VB.Form Form3
    ScaleHeight     =   6360
    ScaleWidth      =   9810
    StartUpPosition =   3  'Windows Default
+   Begin MSComDlg.CommonDialog CommonDialog1 
+      Left            =   3000
+      Top             =   5040
+      _ExtentX        =   847
+      _ExtentY        =   847
+      _Version        =   393216
+   End
    Begin VB.TextBox Text6 
       DataField       =   "cantidad"
       DataSource      =   "Adodc1"
@@ -371,24 +379,22 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Private Sub Command1_Click()
     Adodc1.Recordset.MoveLast
-    x = App.Path
-    Image2.Picture = LoadPicture(x & "\" & Label8.Caption)
     
     If Adodc1.Recordset.BOF Then
         adocd1.Recordset.MoveLast
     End If
-    
+     x = App.Path
+    Image2.Picture = LoadPicture(x & "\" & Label8.Caption)
 End Sub
 
 Private Sub Command2_Click()
     Adodc1.Recordset.MoveNext
-    x = App.Path
-    Image2.Picture = LoadPicture(x & "\" & Label8.Caption)
     
     If Adodc1.Recordset.EOF Then
         Adodc1.Recordset.MoveFirst
     End If
-    
+    x = App.Path
+    Image2.Picture = LoadPicture(x & "\" & Label8.Caption)
 End Sub
 Private Sub Command3_Click()
     FileCopy CommonDialog1.FileName, App.Path & "\\" & CommonDialog1.FileTitle
@@ -410,7 +416,7 @@ Private Sub Command3_Click()
     Command4.Enabled = True
     Command5.Enabled = True
     Command6.Enabled = True
-   
+    Command7.Enabled = True
     
 End Sub
 
@@ -429,6 +435,7 @@ Private Sub Command4_Click()
     Command4.Enabled = False
     Command5.Enabled = False
     Command6.Enabled = False
+    Command7.Enabled = True
     
     Text1.SetFocus
     
@@ -457,7 +464,7 @@ Private Sub Command6_Click()
     Command4.Enabled = False
     Command5.Enabled = False
     Command6.Enabled = False
-    
+    Command7.Enabled = True
 End Sub
 
 Private Sub Command7_Click()
@@ -487,8 +494,8 @@ Private Sub Form_Load()
     Command3.Enabled = True
     Command4.Enabled = True
     Command5.Enabled = True
-    Command6.Enabled = False
-    
+    Command6.Enabled = True
+    Command7.Enabled = False
     
 
 End Sub
